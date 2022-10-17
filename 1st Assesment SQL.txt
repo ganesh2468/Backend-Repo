@@ -1,0 +1,23 @@
+a) select * from Employee;
+b) select Eno,Ename from Employee;
+c) select Ename,hiredate,sal from Employee;
+d) select Ename,sal+300 as"Incremented Sal" from Employee;
+e) select Ename,12*sal+100 as"Annual Salary" from Employee;
+f) select ENAME,sal  from Employee where comm is null;
+g) select distinct dept from employee;
+h) select distinct job from Employee;
+i) select sal from Employee where sal<comm;
+j) select sal from Employee where sal between 3000 and 4000;
+k) select mgr from Employee where mgr in(7902,7566,7788);
+l) select Ename from Employee where ename like "S%";
+m) select * from Employee where sal>4100;
+n) select * from Employee order by hiredate asc;
+o) select * from Employee order by dept asc,sal desc;
+p) select ename,job from Employee where hiredate between 1981-02-20 and 1981-05-01;*
+q) select ename,dept from Employee where dept in(20,30) order by ename;
+r) select ename,sal from Employee where sal>1200 and dept=10 or dept=40 ;
+s) select ename,hiredate from Employee where hiredate like "1981-%" ;
+t) select ename from Employee where mgr is null;
+u) select ename,sal from Employee where comm is not null;
+v) select ename from Employee where ename like "_a%";
+w) select ename,job from Employee where dept=20 and mgr=7788;
