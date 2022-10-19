@@ -1,0 +1,45 @@
+#non-parameterized
+Delimiter $
+create function HelloWorld()
+returns varchar(50)
+deterministic
+begin
+return"Hello world from user" ;
+end $
+delimiter ;
+select Helloworld() as "message"; 
+
+#parameterized
+delimiter $
+create function showName(firstName varchar(100),lastName varchar(100))
+returns varchar(100)
+deterministic
+begin
+return concat(firstName,lastname);
+end $ 
+select showName("a","b");
+select showName("c","d");
+
+#multiplier
+delimiter $
+create function multiple(first int,second int)
+returns int
+deterministic
+begin
+return first*second;
+end $
+delimiter ;
+select multiple(2,2);
+
+#age
+delimiter $
+create function calculateAge(dob date)
+returns int
+deterministic
+begin
+declare today_date date;
+select current_date() into today_date;
+return year(today_date)-year(dob);
+end $
+delimiter ;
+select calculateAge("1995-10-20") as "your-age";
