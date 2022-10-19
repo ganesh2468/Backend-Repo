@@ -1,0 +1,40 @@
+create table TEACHER(
+  NO int,
+  Name varchar(20),
+  Age int,
+  Department varchar(20),
+  DOJ varchar(10),
+  Salary int,
+  Sex varchar(1)
+);
+
+
+
+insert into TEACHER(NO,Name,Age,Department,DOJ,Salary,Sex)values
+(1,"Jugal",34,"Computer","1997-01-10",12000,"M"),
+(2,"Sharmila",31,"History","1998-03-24",20000,"F"),
+(3,"Sandeep",32,"Maths","1996-12-12",30000,"M"),
+(4,"Sangeetha",35,"History","1999-07-01",140000,"F"),
+(5,"Rakesh",42,"Maths","1997-09-05",25000,"M"),
+(6,"Shyam",50,"History","1998-06-27",30000,"M"),
+(7,"Shiv Om",44,"Computer","1997-02-25",21000,"M"),
+(8,"Shalakha",33,"Maths","1997-07-31",20000,"F");
+
+
+a) desc teacher;
+b) select * from teacher;
+c) select * from teacher where Department="History";
+d) select * from teacher where Department="Maths" and Sex="F";
+e) select Name,DOJ from teacher order by DOJ asc;
+f) select Name,Salary,Age from teacher where Sex="M";
+g) select name,salary,age,15/100*salary as "Bonus" from teacher;
+h) select name,DOJ from TEACHER where DOJ like "1997-%";
+i) select * from TEACHER limit 3;
+j) select * from TEACHER where NO>3;
+k) insert into teacher values(9,"Raja",26,"Computer","1995-05-13",2300,"M");
+
+
+i) 3
+ii) 35
+iii) 20050.0000
+iv) 32300
