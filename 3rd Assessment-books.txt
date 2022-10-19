@@ -1,0 +1,21 @@
+create table books(Book_id varchar(10),Book_name varchar(100),Author_name varchar(100),Publishers varchar(100),price int(10),Type varchar(100),Qty int(10), PRIMARY KEY (Book_id));
+insert into books values("C0001","Fast Cook","Lata Kapoor","EPB",355,"Cookery",5);
+insert into books values("F0001","The Tears","William Hopkins","First Publ",650,"Fiction",20);
+insert into books values("T0001","My First C++","Brain and Brook","EPB",350,"Text",10);
+insert into books values("T0002","C++ Brain Works","AW Rossaine","TDH",350,"Text",15);
+insert into books values("F0002","Thunderbolts","Anna Roberts","First Publ",750,"Fiction",50);
+
+create table issued(book_id varchar(10) REFERENCES books(book_id),Qunatity_issued int);
+insert into issued values("T0001",4);
+insert into issued values("C0001",5);
+insert into issued values("F0001",2);
+
+i) select book_name,author_name,price,Qunatity_issued from books join issued on books.book_id=issued.book_id where publishers="First Publ";
+ii) select book_name from books join issued on books.book_id=issued.book_id where type="text";
+iii) select book_name,price from books order by price asc;
+iv) select price+50 as "Increased Price"from books where publishers="EPB";
+
+v) 5
+vi) 750
+vii) Fast Cook		Lata Kapoor
+     My First C++	Brain and Brook
