@@ -1,0 +1,42 @@
+create table products(
+productCode varchar(10),
+productName varchar(25),
+price int,
+qtyRemaining int,
+qtySold int);
+
+insert into products values("p1","iphone 13 pro max",1200,5,195),
+("p2","airpods pro",279,10,90),
+("p3","macbook pro 16",5000,2,48),
+("p4","ipad air",650,1,9);
+
+create table sales(
+orderId int,
+orderDate date,
+productCode	varchar(10) references products(productCode),
+quantityOrderd int,
+salePrice int);
+
+insert into sales values(1,'2022-01-10',"p1",100,120000),
+(2,'2022-01-20','p1',50,60000),
+(3,'2022-02-05',"p1",45,540000),
+(4,'2022-01-15',"p2",50,13950),
+(5,'2022-03-25',"p2",40,11160),
+(6,'2022-02-25',"p3",10,50000),
+(7,'2022-03-15',"p3",10,50000),
+(8,'2022-03-25',"p3",20,100000),
+(9,"2022-04-21","p3",8,40000),
+(10,"2022-04-27","p4",9,5850);
+
+Delimiter $
+create procedure sale(in orderId int,in productCode varchar(10),in qtyOrderd int,out qtyRemaining int,out qtySold int)
+begin
+select qtyOrderd from sales into qtySold;
+select (products.qtySold-sales.qtyOrderd) into qtyRemaining where sales.orderId=orderId;
+update products set products.qtyRemaining =(products.qtyRemaining + qtyRemaining) where products.productCode = sales.productCode;
+update products set products.qtySold = qtySold;
+select * from products;
+end$
+Delimiter ;
+
+call sale(1,"p1",100,@qtyRemaining,@qtySold);
